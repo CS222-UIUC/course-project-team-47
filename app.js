@@ -23,4 +23,16 @@ connection.connect(function (err) {
     console.log("Connected!");
 });
 
+connection.query('SELECT CURDATE()', function (err, res, fields) {
+    if (err) throw err;
+    console.log(res);
+});
+
+// Selecting Data
+const q = 'SELECT * FROM users';
+connection.query(q, function (error, results, fields) {
+    if (error) throw error;
+    console.log(results);
+});
+
 connection.end();
