@@ -1,5 +1,8 @@
 const mysql = require('mysql2');
 const { faker } = require('@faker-js/faker');
+const express = require('express');
+
+const app = express();
 
 require('dotenv').config();
 
@@ -51,6 +54,7 @@ connection.query('SELECT CURDATE()', function (err, res, fields) {
 // });
 
 // Inserting 500 users (faker)
+/*
 let data = [];
 for (let i = 0; i < 500; i++) {
     data.push([
@@ -62,12 +66,29 @@ const q = 'INSERT INTO users (email, created_at) VALUES ?';
 connection.query(q, [data], function (error, result) {
     if (error) throw error;
 });
+*/
 
 // Selecting Data
+/*
 const qSelect = 'SELECT * FROM users';
 connection.query(qSelect, function (error, results, fields) {
     if (error) throw error;
     console.log(results);
 });
+*/
 
-connection.end();
+// connection.end();
+
+app.get('/', function (req, res) {
+    const q = 'SELECT COUNT(*) AS count FROM users';
+    connection.query(q, function (error, results) {
+        if (error) throw error;
+        const count = results[0].count;
+        res.send(`The number of user is ${count}`);
+    });
+});
+
+const PORT = 3000;
+app.listen(PORT, function () {
+    console.log(`Listening on port ${PORT}`);
+});
