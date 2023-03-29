@@ -88,6 +88,15 @@ app.get('/', function (req, res) {
     });
 });
 
+app.get("/joke", function(req, res){
+ let joke = "Why don't scientists trust atoms? Because they make up everything!";
+ res.send(joke);
+});
+app.get("/random_num", function(req, res){
+ let num = Math.floor((Math.random() * 10) + 1);
+ res.send("Your lucky number is " + num);
+});
+
 const PORT = 3000;
 app.listen(PORT, function () {
     console.log(`Listening on port ${PORT}`);
