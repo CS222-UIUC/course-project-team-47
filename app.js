@@ -1,17 +1,17 @@
-const mysql = require('mysql2');
-const { faker } = require('@faker-js/faker');
-const express = require('express');
+const mysql = require("mysql2");
+const { faker } = require("@faker-js/faker");
+const express = require("express");
 
 const app = express();
 
-require('dotenv').config();
+require("dotenv").config();
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    port: process.env.MYSQL_LOCAL_PORT,
-    user: process.env.MYSQL_ROOT_USER,
-    password: process.env.MYSQL_ROOT_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+  host: "localhost",
+  port: process.env.MYSQL_LOCAL_PORT,
+  user: process.env.MYSQL_ROOT_USER,
+  password: process.env.MYSQL_ROOT_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
 });
 
 // const connection = mysql.createConnection({
@@ -23,13 +23,13 @@ const connection = mysql.createConnection({
 // })
 
 connection.connect(function (err) {
-    if (err) throw err;
-    console.log("Connected!");
+  if (err) throw err;
+  console.log("Connected!");
 });
 
-connection.query('SELECT CURDATE()', function (err, res, fields) {
-    if (err) throw err;
-    console.log(res);
+connection.query("SELECT CURDATE()", function (err, res, fields) {
+  if (err) throw err;
+  console.log(res);
 });
 
 // Inserting data 1
@@ -79,25 +79,26 @@ connection.query(qSelect, function (error, results, fields) {
 
 // connection.end();
 
-app.get('/', function (req, res) {
-    const q = 'SELECT COUNT(*) AS count FROM users';
-    connection.query(q, function (error, results) {
-        if (error) throw error;
-        const count = results[0].count;
-        res.send(`The number of user is ${count}`);
-    });
+app.get("/", function (req, res) {
+  const q = "SELECT COUNT(*) AS count FROM users";
+  connection.query(q, function (error, results) {
+    if (error) throw error;
+    const count = results[0].count;
+    res.send(`The number of user is ${count}`);
+  });
 });
 
-app.get("/joke", function(req, res){
- let joke = "Why don't scientists trust atoms? Because they make up everything!";
- res.send(joke);
+app.get("/joke", function (req, res) {
+  let joke =
+    "<strong>Why don't scientists trust atoms?</strong> <em>Because they make up everything!</em>";
+  res.send(joke);
 });
-app.get("/random_num", function(req, res){
- let num = Math.floor((Math.random() * 10) + 1);
- res.send("Your lucky number is " + num);
+app.get("/random_num", function (req, res) {
+  let num = Math.floor(Math.random() * 10 + 1);
+  res.send("Your lucky number is... </br>" + num);
 });
 
 const PORT = 3000;
 app.listen(PORT, function () {
-    console.log(`Listening on port ${PORT}`);
+  console.log(`Listening on port ${PORT}`);
 });
