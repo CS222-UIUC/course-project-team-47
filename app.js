@@ -4,7 +4,10 @@ const express = require("express");
 
 const app = express();
 
-require("dotenv").config();
+
+app.set("view engine", "ejs");
+
+require('dotenv').config();
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -79,13 +82,13 @@ connection.query(qSelect, function (error, results, fields) {
 
 // connection.end();
 
-app.get("/", function (req, res) {
-  const q = "SELECT COUNT(*) AS count FROM users";
-  connection.query(q, function (error, results) {
-    if (error) throw error;
-    const count = results[0].count;
-    res.send(`The number of user is ${count}`);
-  });
+app.get('/', function (req, res) {
+    const q = 'SELECT COUNT(*) AS count FROM users';
+    connection.query(q, function (error, results) {
+        if (error) throw error;
+        const count = results[0].count;
+        res.render("home")
+    });
 });
 
 app.get("/joke", function (req, res) {
@@ -100,5 +103,5 @@ app.get("/random_num", function (req, res) {
 
 const PORT = 3000;
 app.listen(PORT, function () {
-  console.log(`Listening on port ${PORT}`);
+    console.log(`Listening on port ${PORT}`);
 });
