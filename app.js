@@ -4,6 +4,8 @@ const express = require('express');
 
 const app = express();
 
+app.set("view engine", "ejs");
+
 require('dotenv').config();
 
 const connection = mysql.createConnection({
@@ -84,7 +86,7 @@ app.get('/', function (req, res) {
     connection.query(q, function (error, results) {
         if (error) throw error;
         const count = results[0].count;
-        res.send(`The number of user is ${count}`);
+        res.render("home")
     });
 });
 
