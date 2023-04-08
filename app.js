@@ -87,7 +87,7 @@ app.get('/', function (req, res) {
     connection.query(q, function (error, results) {
         if (error) throw error;
         const count = results[0].count;
-        res.render("home")
+        res.render("home", { data: count });
     });
 });
 
