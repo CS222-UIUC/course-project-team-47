@@ -101,6 +101,10 @@ app.get("/random_num", function (req, res) {
   res.send("Your lucky number is... </br>" + num);
 });
 
+app.get('/register', function (req, res) {
+  console.log("POST request sent to /register");
+});
+
 const PORT = 3000;
 app.listen(PORT, function () {
     console.log(`Listening on port ${PORT}`);
