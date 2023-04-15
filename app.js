@@ -103,7 +103,14 @@ app.get("/random_num", function (req, res) {
 
 
 app.post('/register', function (req, res) {
-  console.log("POST request sent to /register email is " + req.body.email);
+    const person = {
+        email: req.body.email
+    };
+
+    connection.query('INSERT INTO users SET ?', person, function (err, result) {
+        if (err) throw err;
+        res.send("Thanks for joining our waitlist!");
+    });
 });
 
 const PORT = 3000;
