@@ -101,6 +101,7 @@ app.get("/random_num", function (req, res) {
   res.send("Your lucky number is... </br>" + num);
 });
 
+
 app.post('/register', function (req, res) {
   console.log("POST request sent to /register email is " + req.body.email);
 });
