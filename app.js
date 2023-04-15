@@ -1,12 +1,12 @@
 const mysql = require("mysql2");
 const { faker } = require("@faker-js/faker");
 const express = require("express");
-
+const bodyParser = require("body-parser");
 const app = express();
 
 
 app.set("view engine", "ejs");
-
+app.use(bodyParser.urlencoded({ extended: true }));
 require('dotenv').config();
 
 const connection = mysql.createConnection({
@@ -81,6 +81,10 @@ connection.query(qSelect, function (error, results, fields) {
 */
 
 // connection.end();
+
+app.post('/register', function (req, res) {
+  console.log("POST request sent to /register email is " + req.body.email);
+});
 
 app.get('/', function (req, res) {
     const q = 'SELECT COUNT(*) AS count FROM users';
