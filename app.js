@@ -1,12 +1,12 @@
 const mysql = require("mysql2");
 const { faker } = require("@faker-js/faker");
 const express = require("express");
-
+const bodyParser = require("body-parser");
 const app = express();
 
 
 app.set("view engine", "ejs");
-
+app.use(bodyParser.urlencoded({ extended: true }));
 require('dotenv').config();
 
 const connection = mysql.createConnection({
@@ -101,8 +101,9 @@ app.get("/random_num", function (req, res) {
   res.send("Your lucky number is... </br>" + num);
 });
 
-app.get('/register', function (req, res) {
-  console.log("POST request sent to /register");
+
+app.post('/register', function (req, res) {
+  console.log("POST request sent to /register email is " + req.body.email);
 });
 
 const PORT = 3000;
