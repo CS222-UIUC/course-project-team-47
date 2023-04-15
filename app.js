@@ -82,16 +82,12 @@ connection.query(qSelect, function (error, results, fields) {
 
 // connection.end();
 
-app.post('/register', function (req, res) {
-  console.log("POST request sent to /register email is " + req.body.email);
-});
-
 app.get('/', function (req, res) {
     const q = 'SELECT COUNT(*) AS count FROM users';
     connection.query(q, function (error, results) {
         if (error) throw error;
         const count = results[0].count;
-        res.render("home")
+        res.render("home", { data: count });
     });
 });
 
@@ -103,6 +99,10 @@ app.get("/joke", function (req, res) {
 app.get("/random_num", function (req, res) {
   let num = Math.floor(Math.random() * 10 + 1);
   res.send("Your lucky number is... </br>" + num);
+});
+
+app.post('/register', function (req, res) {
+  console.log("POST request sent to /register email is " + req.body.email);
 });
 
 const PORT = 3000;
