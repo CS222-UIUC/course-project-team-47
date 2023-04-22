@@ -9,14 +9,15 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
+
 require('dotenv').config();
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    port: process.env.MYSQL_LOCAL_PORT,
-    user: process.env.MYSQL_ROOT_USER,
-    password: process.env.MYSQL_ROOT_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+  host: "localhost",
+  port: process.env.MYSQL_LOCAL_PORT,
+  user: process.env.MYSQL_ROOT_USER,
+  password: process.env.MYSQL_ROOT_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
 });
 
 // const connection = mysql.createConnection({
@@ -28,13 +29,13 @@ const connection = mysql.createConnection({
 // })
 
 connection.connect(function (err) {
-    if (err) throw err;
-    console.log("Connected!");
+  if (err) throw err;
+  console.log("Connected!");
 });
 
-connection.query('SELECT CURDATE()', function (err, res, fields) {
-    if (err) throw err;
-    console.log(res);
+connection.query("SELECT CURDATE()", function (err, res, fields) {
+  if (err) throw err;
+  console.log(res);
 });
 
 // Inserting data 1
