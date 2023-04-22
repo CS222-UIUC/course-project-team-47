@@ -1,8 +1,13 @@
 const mysql = require('mysql2');
 const { faker } = require('@faker-js/faker');
 const express = require('express');
+const bodyParser = require("body-parser");
 
 const app = express();
+
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + "/public"));
 
 require('dotenv').config();
 
@@ -54,7 +59,6 @@ connection.query('SELECT CURDATE()', function (err, res, fields) {
 // });
 
 // Inserting 500 users (faker)
-/*
 let data = [];
 for (let i = 0; i < 500; i++) {
     data.push([
@@ -66,7 +70,6 @@ const q = 'INSERT INTO users (email, created_at) VALUES ?';
 connection.query(q, [data], function (error, result) {
     if (error) throw error;
 });
-*/
 
 // Selecting Data
 /*
@@ -84,17 +87,28 @@ app.get('/', function (req, res) {
     connection.query(q, function (error, results) {
         if (error) throw error;
         const count = results[0].count;
-        res.send(`The number of user is ${count}`);
+        res.render("home", { data: count });
     });
 });
 
-app.get("/joke", function(req, res){
- let joke = "Why don't scientists trust atoms? Because they make up everything!";
- res.send(joke);
+app.post('/register', function (req, res) {
+    const person = {
+        email: req.body.email
+    };
+
+    connection.query('INSERT INTO users SET ?', person, function (err, result) {
+        if (err) throw err;
+        res.send("Thanks for joining our waitlist!");
+    });
 });
-app.get("/random_num", function(req, res){
- let num = Math.floor((Math.random() * 10) + 1);
- res.send("Your lucky number is " + num);
+
+app.get("/joke", function (req, res) {
+    let joke = "<strong>Why don't scientists trust atoms?</strong> <em>Because they make up everything!</em>";
+    res.send(joke);
+});
+app.get("/random_num", function (req, res) {
+    let num = Math.floor((Math.random() * 10) + 1);
+    res.send("Your lucky number is... </br>" + num);
 });
 
 const PORT = 3000;
