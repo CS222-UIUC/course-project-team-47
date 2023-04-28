@@ -13,11 +13,11 @@ app.use(express.static(__dirname + "/public"));
 require('dotenv').config();
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  port: process.env.MYSQL_LOCAL_PORT,
-  user: process.env.MYSQL_ROOT_USER,
-  password: process.env.MYSQL_ROOT_PASSWORD,
-  database: process.env.MYSQL_DATABASE,
+    host: "localhost",
+    port: process.env.MYSQL_LOCAL_PORT,
+    user: process.env.MYSQL_ROOT_USER,
+    password: process.env.MYSQL_ROOT_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
 });
 
 // const connection = mysql.createConnection({
@@ -34,8 +34,8 @@ connection.connect(function (err) {
 });
 
 connection.query("SELECT CURDATE()", function (err, res, fields) {
-  if (err) throw err;
-  console.log(res);
+    if (err) throw err;
+    console.log(res);
 });
 
 // Inserting data 1
@@ -99,7 +99,14 @@ app.post('/register', function (req, res) {
 
     connection.query('INSERT INTO users SET ?', person, function (err, result) {
         if (err) throw err;
-        res.send("Thanks for joining our waitlist!");
+        const q = 'SELECT COUNT(*) AS count FROM users';
+        connection.query(q, function (error, results) {
+            if (error) throw error;
+            const count = results[0].count;
+            const waitingDays = Math.floor(count / 47);
+            const waitingHours = count % 100;
+            res.send("Thanks for joining our waitlist! </br>" + "The estimated waiting time is " + waitingDays + " days and " + waitingHours + " hours");
+        });
     });
 });
 
