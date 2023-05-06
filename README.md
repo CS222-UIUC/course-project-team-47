@@ -11,7 +11,7 @@ Introducing "QueueEase", an innovative online waitlist platform designed to stre
 
 ## Demo
 
-**Link to Our Final Presentation Video:** [Insert Demo URL]
+**Link to Our Final Presentation Video:** [https://mediaspace.illinois.edu/media/t/1_z2666q4u]
 
 ## Technical Architecture
 ![image](https://github.com/CS222-UIUC/course-project-team-47/blob/main/Screen%20Shot%202023-05-05%20at%207.18.40%20PM.png)
