@@ -14,7 +14,7 @@ Introducing "QueueEase", an innovative online waitlist platform designed to stre
 **Link to Our Final Presentation Video:** [Insert Demo URL]
 
 ## Technical Architecture
-
+![image](https://github.com/CS222-UIUC/course-project-team-47/blob/main/Screen%20Shot%202023-05-05%20at%207.18.40%20PM.png)
 QueueEase is built using Node.js and leverages several npm packages:
 
 - mysql2: Database connection and management
