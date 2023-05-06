@@ -1,6 +1,7 @@
 # QueueEase
 
-## Teammembers: Victor Li(wentaol4)
+## Teammembers: 
+- Victor Li(wentaol4)
 ## Summary
 
 Introducing "QueueEase", an innovative online waitlist platform designed to streamline and improve the waitlist experience across various industries. QueueEase offers user-friendly features and a scalable architecture, catering to both small businesses and large enterprises. Our ultimate goal is to transform the way waitlists are managed, elevating convenience and satisfaction for everyone involved.
