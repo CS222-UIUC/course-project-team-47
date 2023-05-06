@@ -37,9 +37,3 @@ The application's main file `app.js` consists of the following sections:
 3. Commented out sections for inserting sample data into the database using various methods, including the `@faker-js/faker` package for generating random email addresses.
 4. Main application routes for the home page, user registration, and some additional example routes.
 5. Application startup on port 3000.
-
-### Notable Sections
-
-- Data insertion with Faker (lines 47-55)
-- Home route with database query to get the user count (lines 73-80)
-- User registration route, inserting a new user, and calculating estimated waiting time (lines 82-99)
