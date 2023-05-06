@@ -28,11 +28,6 @@ QueueEase is built using Node.js and leverages several npm packages:
 4. Run the application using `npm start`.
 5. Access the web application at `http://localhost:3000`.
 
-## Troubleshooting
-
-### Problem 1: MySQL Port Conflict
-If you have MySQL installed on your machine and it is using the default port 3306, change the port number in the `.env` file to avoid conflicts.
-
 ## Code Overview
 
 The application's main file `app.js` consists of the following sections:
