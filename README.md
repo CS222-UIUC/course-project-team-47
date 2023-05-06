@@ -1,10 +1,10 @@
 # QueueEase
 
 ## Teammembers: 
-- Victor Li(wentaol4)
-- Kevin Yan(guanwen2)
-- Tongrui Yu(tongrui4)
-- Minjun Gao(minjun2)
+- Victor Li(wentaol4): Implemented the body-parser middleware for request body parsing
+- Kevin Yan(guanwen2): Integrated the Express framework for building the web application
+- Tongrui Yu(tongrui4): Integrated the Faker package for generating random email addresses
+- Minjun Gao(minjun2): Set up and configured the MySQL database connection using the mysql2 package
 ## Summary
 
 Introducing "QueueEase", an innovative online waitlist platform designed to streamline and improve the waitlist experience across various industries. QueueEase offers user-friendly features and a scalable architecture, catering to both small businesses and large enterprises. Our ultimate goal is to transform the way waitlists are managed, elevating convenience and satisfaction for everyone involved.
